@@ -22,16 +22,16 @@ const int c_SSR = 3;
 const int c_buzzer = 6;
 const int c_Thermistor_PIN = A0;
 
-const int c_max_modes = 3;                              //For now, we only work with 1 mode...
+const int c_max_modes = 4;                              //For now, we only work with 1 mode...
 
-const String c_ModeNames[c_max_modes] = {"Mode 1", "EasyPrint Pb", "Desolder"};
+const String c_ModeNames[c_max_modes] = {"Mode 1", "EasyPrint Pb", "Desolder", "RL-403"};
 
-const int c_preheat_setpoint[c_max_modes] = {140, 155, 155};
-const int c_soak_setpoint[c_max_modes] = {150, 160, 160};
-const int c_reflow_setpoint[c_max_modes] = {200, 220, 220};
-const int c_preheat_duration[c_max_modes] = {90, 90, 90};
-const int c_soak_duration[c_max_modes] = {20, 60, 60};
-const int c_reflow_duration[c_max_modes] = {20, 75, 180};
+const int c_preheat_setpoint[c_max_modes] = {140, 155, 155, 175};
+const int c_soak_setpoint[c_max_modes] = {150, 160, 160, 200};
+const int c_reflow_setpoint[c_max_modes] = {200, 215, 225, 230};
+const int c_preheat_duration[c_max_modes] = {90, 90, 90, 90};
+const int c_soak_duration[c_max_modes] = {20, 60, 60, 60};
+const int c_reflow_duration[c_max_modes] = {20, 60, 180, 30};
 
 const float c_cooldown_temp = 40;                       //When is ok to touch the plate
 const float refresh_rate = 500;                       //LCD refresh rate. You can change this if you want
@@ -154,7 +154,9 @@ void loop() {
       else if(selected_mode == 3){
         lcd.print(c_ModeNames[selected_mode - 1]);     
       }
-      
+      else if(selected_mode == 4){
+        lcd.print(c_ModeNames[selected_mode - 1]);     
+      }
       
     }//End of running_mode = 0
 
